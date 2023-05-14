@@ -11,7 +11,9 @@ void main() {
     try {
       AtomFeed.parse(xmlString);
       fail('Should throw Argument Error');
-    } on ArgumentError {}
+    } on ArgumentError catch (e, _) {
+      // print('$e\n$stackStrace');
+    }
   });
 
   test('parse Atom.xml', () {
@@ -191,8 +193,8 @@ void main() {
     expect(item.media!.embed!.height, 323);
     expect(item.media!.embed!.params.length, 5);
     expect(item.media!.embed!.params.first.name, 'type');
-    expect(item.media!.embed!.params.first.value,
-        'application/x-shockwave-flash');
+    expect(
+        item.media!.embed!.params.first.value, 'application/x-shockwave-flash');
 
     expect(item.media!.responses.length, 2);
     expect(item.media!.responses.first, 'http://www.response1.com');
@@ -208,8 +210,8 @@ void main() {
     expect(item.media!.prices.length, 2);
     expect(item.media!.prices.first.price, 19.99);
     expect(item.media!.prices.first.type, 'rent');
-    expect(item.media!.prices.first.info,
-        'http://www.dummy.jp/package_info.html');
+    expect(
+        item.media!.prices.first.info, 'http://www.dummy.jp/package_info.html');
     expect(item.media!.prices.first.currency, 'EUR');
 
     expect(item.media!.license!.type, 'text/html');
