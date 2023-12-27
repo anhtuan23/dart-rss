@@ -1,11 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Player {
-  final String? url;
-  final int width;
-  final int height;
-  final String? value;
-
   const Player({
     this.url,
     this.width = 0,
@@ -24,4 +19,9 @@ class Player {
       value: element.innerText,
     );
   }
+
+  final String? url;
+  final int width;
+  final int height;
+  final String? value;
 }

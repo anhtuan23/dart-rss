@@ -1,3 +1,4 @@
+import 'package:meta/meta.dart';
 import 'package:xml/xml.dart';
 
 final _imagesRegExp = RegExp(
@@ -10,10 +11,9 @@ final _imagesRegExp = RegExp(
 ///
 /// - `xmlns:content="http://purl.org/rss/1.0/modules/content/"`
 ///
-class RssContent {
-  final String value;
-  final Iterable<String> images;
 
+@immutable
+class RssContent {
   const RssContent(this.value, this.images);
 
   static RssContent? parse(XmlElement? element) {
@@ -28,6 +28,9 @@ class RssContent {
     });
     return RssContent(content, images);
   }
+
+  final String value;
+  final Iterable<String> images;
 
   @override
   bool operator ==(Object other) =>

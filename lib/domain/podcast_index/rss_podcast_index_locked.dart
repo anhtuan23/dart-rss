@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssPodcastIndexLocked {
-  final String? owner;
-  final bool? locked;
-
   RssPodcastIndexLocked({
     this.owner,
     this.locked,
@@ -14,7 +11,10 @@ class RssPodcastIndexLocked {
 
     return RssPodcastIndexLocked(
       owner: element.getAttribute('owner'),
-      locked: element.innerText == 'yes' ? true : false,
+      locked: element.innerText == 'yes',
     );
   }
+
+  final String? owner;
+  final bool? locked;
 }

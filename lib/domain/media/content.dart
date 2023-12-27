@@ -1,21 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Content {
-  final String? url;
-  final String? type;
-  final int fileSize;
-  final String? medium;
-  final bool? isDefault;
-  final String? expression;
-  final int bitrate;
-  final double framerate;
-  final double samplingrate;
-  final int channels;
-  final int duration;
-  final int height;
-  final int width;
-  final String? lang;
-
   const Content({
     this.url,
     this.type,
@@ -52,4 +37,19 @@ class Content {
       lang: element.getAttribute('lang'),
     );
   }
+
+  final String? url;
+  final String? type;
+  final int fileSize;
+  final String? medium;
+  final bool? isDefault;
+  final String? expression;
+  final int bitrate;
+  final double framerate;
+  final double samplingrate;
+  final int channels;
+  final int duration;
+  final int height;
+  final int width;
+  final String? lang;
 }

@@ -1,10 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Credit {
-  final String? role;
-  final String? scheme;
-  final String? value;
-
   const Credit({
     this.role,
     this.scheme,
@@ -18,4 +14,8 @@ class Credit {
       value: element.innerText,
     );
   }
+
+  final String? role;
+  final String? scheme;
+  final String? value;
 }

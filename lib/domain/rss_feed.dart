@@ -6,36 +6,11 @@ import 'package:dart_rss/domain/rss_category.dart';
 import 'package:dart_rss/domain/rss_cloud.dart';
 import 'package:dart_rss/domain/rss_image.dart';
 import 'package:dart_rss/domain/rss_item.dart';
+import 'package:dart_rss/domain/rss_itunes.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-import 'rss_itunes.dart';
-
 class RssFeed {
-  final String? title;
-  final String? author;
-  final String? description;
-  final String? link;
-  final List<RssItem> items;
-
-  final RssImage? image;
-  final RssCloud? cloud;
-  final List<RssCategory> categories;
-  final List<String> skipDays;
-  final List<int> skipHours;
-  final String? lastBuildDate;
-  final String? language;
-  final String? generator;
-  final String? copyright;
-  final String? docs;
-  final String? managingEditor;
-  final String? rating;
-  final String? webMaster;
-  final int ttl;
-  final DublinCore? dc;
-  final RssItunes? itunes;
-  final RssPodcastIndex? podcastIndex;
-
   const RssFeed({
     this.title,
     this.author,
@@ -75,15 +50,12 @@ class RssFeed {
       author: findElementOrNull(channelElement, 'author')?.innerText,
       description: findElementOrNull(channelElement, 'description')?.innerText,
       link: findElementOrNull(channelElement, 'link')?.innerText,
-      items: channelElement
-          .findElements('item')
-          .map((element) => RssItem.parse(element))
-          .toList(),
+      items: channelElement.findElements('item').map(RssItem.parse).toList(),
       image: RssImage.parse(findElementOrNull(channelElement, 'image')),
       cloud: RssCloud.parse(findElementOrNull(channelElement, 'cloud')),
       categories: channelElement
           .findElements('category')
-          .map((element) => RssCategory.parse(element))
+          .map(RssCategory.parse)
           .toList(),
       skipDays: findElementOrNull(channelElement, 'skipDays')
               ?.findAllElements('day')
@@ -106,11 +78,36 @@ class RssFeed {
       rating: findElementOrNull(channelElement, 'rating')?.innerText,
       webMaster: findElementOrNull(channelElement, 'webMaster')?.innerText,
       ttl: int.tryParse(
-              findElementOrNull(channelElement, 'ttl')?.innerText ?? '0') ??
+            findElementOrNull(channelElement, 'ttl')?.innerText ?? '0',
+          ) ??
           0,
       dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
       podcastIndex: RssPodcastIndex.parse(channelElement),
     );
   }
+
+  final String? title;
+  final String? author;
+  final String? description;
+  final String? link;
+  final List<RssItem> items;
+
+  final RssImage? image;
+  final RssCloud? cloud;
+  final List<RssCategory> categories;
+  final List<String> skipDays;
+  final List<int> skipHours;
+  final String? lastBuildDate;
+  final String? language;
+  final String? generator;
+  final String? copyright;
+  final String? docs;
+  final String? managingEditor;
+  final String? rating;
+  final String? webMaster;
+  final int ttl;
+  final DublinCore? dc;
+  final RssItunes? itunes;
+  final RssPodcastIndex? podcastIndex;
 }

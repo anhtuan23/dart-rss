@@ -1,12 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssCloud {
-  final String? domain;
-  final String? port;
-  final String? path;
-  final String? registerProcedure;
-  final String? protocol;
-
   const RssCloud(
     this.domain,
     this.port,
@@ -26,4 +20,10 @@ class RssCloud {
     final protocol = node.getAttribute('protocol');
     return RssCloud(domain, port, path, registerProcedure, protocol);
   }
+
+  final String? domain;
+  final String? port;
+  final String? path;
+  final String? registerProcedure;
+  final String? protocol;
 }

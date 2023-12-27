@@ -1,12 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Text {
-  final String? type;
-  final String? lang;
-  final String? start;
-  final String? end;
-  final String? value;
-
   const Text({
     this.type,
     this.lang,
@@ -27,4 +21,10 @@ class Text {
       value: element.innerText,
     );
   }
+
+  final String? type;
+  final String? lang;
+  final String? start;
+  final String? end;
+  final String? value;
 }

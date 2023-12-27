@@ -1,8 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssItunesImage {
-  final String? href;
-
   const RssItunesImage({this.href});
 
   static RssItunesImage? parse(XmlElement? element) {
@@ -11,4 +9,6 @@ class RssItunesImage {
       href: element.getAttribute('href')?.trim(),
     );
   }
+
+  final String? href;
 }

@@ -5,15 +5,15 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class Community {
-  final StarRating? starRating;
-  final Statistics? statistics;
-  final Tags? tags;
-
   const Community({
     this.starRating,
     this.statistics,
     this.tags,
   });
+
+  final StarRating? starRating;
+  final Statistics? statistics;
+  final Tags? tags;
 
   static Community? parse(XmlElement? element) {
     if (element == null) {

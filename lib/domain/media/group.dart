@@ -6,11 +6,6 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class Group {
-  final List<Content> contents;
-  final List<Credit> credits;
-  final Category? category;
-  final Rating? rating;
-
   const Group({
     this.contents = const <Content>[],
     this.credits = const <Credit>[],
@@ -23,16 +18,16 @@ class Group {
       return null;
     }
     return Group(
-      contents: element
-          .findElements('media:content')
-          .map((e) => Content.parse(e))
-          .toList(),
-      credits: element
-          .findElements('media:credit')
-          .map((e) => Credit.parse(e))
-          .toList(),
+      contents:
+          element.findElements('media:content').map(Content.parse).toList(),
+      credits: element.findElements('media:credit').map(Credit.parse).toList(),
       category: Category.parse(findElementOrNull(element, 'media:category')),
       rating: Rating.parse(findElementOrNull(element, 'media:rating')),
     );
   }
+
+  final List<Content> contents;
+  final List<Credit> credits;
+  final Category? category;
+  final Rating? rating;
 }

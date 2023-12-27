@@ -1,1 +1,15 @@
-include: package:pedantic/analysis_options.yaml
+include: package:very_good_analysis/analysis_options.yaml
+
+linter:
+  rules:
+    public_member_api_docs: false
+    flutter_style_todos: false
+    use_setters_to_change_properties: false
+    avoid_returning_this: false
+    avoid_catching_errors: false
+    lines_longer_than_80_chars: false
+    avoid_print: false
+
+analyzer:
+  exclude:
+    - lib/**.g.dart

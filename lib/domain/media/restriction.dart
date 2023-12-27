@@ -1,10 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Restriction {
-  final String? relationship;
-  final String? type;
-  final String? value;
-
   const Restriction({
     this.relationship,
     this.type,
@@ -21,4 +17,8 @@ class Restriction {
       value: element.innerText,
     );
   }
+
+  final String? relationship;
+  final String? type;
+  final String? value;
 }

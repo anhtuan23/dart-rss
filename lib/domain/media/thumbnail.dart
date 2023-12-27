@@ -1,11 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Thumbnail {
-  final String? url;
-  final String? width;
-  final String? height;
-  final String? time;
-
   const Thumbnail({
     this.url,
     this.width,
@@ -21,4 +16,9 @@ class Thumbnail {
       time: element.getAttribute('time'),
     );
   }
+
+  final String? url;
+  final String? width;
+  final String? height;
+  final String? time;
 }

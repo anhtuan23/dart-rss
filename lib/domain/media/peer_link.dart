@@ -1,10 +1,6 @@
 import 'package:xml/xml.dart';
 
 class PeerLink {
-  final String? type;
-  final String? href;
-  final String? value;
-
   const PeerLink({
     this.type,
     this.href,
@@ -21,4 +17,8 @@ class PeerLink {
       value: element.innerText,
     );
   }
+
+  final String? type;
+  final String? href;
+  final String? value;
 }

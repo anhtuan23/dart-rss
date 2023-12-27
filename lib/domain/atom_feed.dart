@@ -7,21 +7,6 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class AtomFeed {
-  final String? id;
-  final String? title;
-  final String? updated;
-  final List<AtomItem> items;
-
-  final List<AtomLink> links;
-  final List<AtomPerson> authors;
-  final List<AtomPerson> contributors;
-  final List<AtomCategory> categories;
-  final AtomGenerator? generator;
-  final String? icon;
-  final String? logo;
-  final String? rights;
-  final String? subtitle;
-
   const AtomFeed({
     this.id,
     this.title,
@@ -51,26 +36,16 @@ class AtomFeed {
       id: findElementOrNull(feedElement, 'id')?.innerText,
       title: findElementOrNull(feedElement, 'title')?.innerText,
       updated: findElementOrNull(feedElement, 'updated')?.innerText,
-      items: feedElement
-          .findElements('entry')
-          .map((element) => AtomItem.parse(element))
-          .toList(),
-      links: feedElement
-          .findElements('link')
-          .map((element) => AtomLink.parse(element))
-          .toList(),
-      authors: feedElement
-          .findElements('author')
-          .map((element) => AtomPerson.parse(element))
-          .toList(),
+      items: feedElement.findElements('entry').map(AtomItem.parse).toList(),
+      links: feedElement.findElements('link').map(AtomLink.parse).toList(),
+      authors:
+          feedElement.findElements('author').map(AtomPerson.parse).toList(),
       contributors: feedElement
           .findElements('contributor')
-          .map((element) => AtomPerson.parse(element))
+          .map(AtomPerson.parse)
           .toList(),
-      categories: feedElement
-          .findElements('category')
-          .map((element) => AtomCategory.parse(element))
-          .toList(),
+      categories:
+          feedElement.findElements('category').map(AtomCategory.parse).toList(),
       generator:
           AtomGenerator.parse(findElementOrNull(feedElement, 'generator')),
       icon: findElementOrNull(feedElement, 'icon')?.innerText,
@@ -79,4 +54,19 @@ class AtomFeed {
       subtitle: findElementOrNull(feedElement, 'subtitle')?.innerText,
     );
   }
+
+  final String? id;
+  final String? title;
+  final String? updated;
+  final List<AtomItem> items;
+
+  final List<AtomLink> links;
+  final List<AtomPerson> authors;
+  final List<AtomPerson> contributors;
+  final List<AtomCategory> categories;
+  final AtomGenerator? generator;
+  final String? icon;
+  final String? logo;
+  final String? rights;
+  final String? subtitle;
 }

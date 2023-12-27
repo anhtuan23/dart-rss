@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssItunesCategory {
-  final String? category;
-  final List<String?> subCategories;
-
   const RssItunesCategory({
     this.category,
     this.subCategories = const <String>[],
@@ -26,4 +23,7 @@ class RssItunesCategory {
           <String>[],
     );
   }
+
+  final String? category;
+  final List<String?> subCategories;
 }

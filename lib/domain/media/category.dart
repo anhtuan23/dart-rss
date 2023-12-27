@@ -1,15 +1,15 @@
 import 'package:xml/xml.dart';
 
 class Category {
-  final String? scheme;
-  final String? label;
-  final String? value;
-
   const Category({
     this.scheme,
     this.label,
     this.value,
   });
+
+  final String? scheme;
+  final String? label;
+  final String? value;
 
   static Category? parse(XmlElement? element) {
     if (element == null) {

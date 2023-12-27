@@ -1,13 +1,6 @@
 import 'package:xml/xml.dart';
 
 class AtomLink {
-  final String? href;
-  final String? rel;
-  final String? type;
-  final String? hreflang;
-  final String? title;
-  final int length;
-
   const AtomLink(
     this.href,
     this.rel,
@@ -30,4 +23,11 @@ class AtomLink {
     }
     return AtomLink(href, rel, type, hreflang, title, length);
   }
+
+  final String? href;
+  final String? rel;
+  final String? type;
+  final String? hreflang;
+  final String? title;
+  final int length;
 }

@@ -1,10 +1,6 @@
 import 'package:xml/xml.dart';
 
 class License {
-  final String? type;
-  final String? href;
-  final String? value;
-
   const License({
     this.type,
     this.href,
@@ -21,4 +17,8 @@ class License {
       value: element.innerText,
     );
   }
+
+  final String? type;
+  final String? href;
+  final String? value;
 }

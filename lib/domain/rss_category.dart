@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssCategory {
-  final String? domain;
-  final String? value;
-
   const RssCategory(this.domain, this.value);
 
   factory RssCategory.parse(XmlElement element) {
@@ -11,4 +8,7 @@ class RssCategory {
     final value = element.innerText;
     return RssCategory(domain, value);
   }
+
+  final String? domain;
+  final String? value;
 }

@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssSource {
-  final String? url;
-  final String value;
-
   const RssSource(this.url, this.value);
 
   static RssSource? parse(XmlElement? element) {
@@ -15,4 +12,7 @@ class RssSource {
 
     return RssSource(url, value);
   }
+
+  final String? url;
+  final String value;
 }

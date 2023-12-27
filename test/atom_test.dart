@@ -1,8 +1,8 @@
 import 'dart:core';
 import 'dart:io';
 
-import 'package:test/test.dart';
 import 'package:dart_rss/dart_rss.dart';
+import 'package:test/test.dart';
 
 void main() {
   test('parse Invalid.xml', () {
@@ -130,8 +130,10 @@ void main() {
     expect(mediaCredit.scheme, 'urn:yvs');
     expect(mediaCredit.value, 'copyright holder of the entity');
 
-    expect(item.media!.category!.scheme,
-        'http://search.yahoo.com/mrss/category_ schema');
+    expect(
+      item.media!.category!.scheme,
+      'http://search.yahoo.com/mrss/category_ schema',
+    );
     expect(item.media!.category!.label, 'Music');
     expect(item.media!.category!.value, 'music/artist/album/song');
 
@@ -142,8 +144,10 @@ void main() {
     expect(item.media!.title!.value, "The Judy's -- The Moo Song");
 
     expect(item.media!.description!.type, 'plain');
-    expect(item.media!.description!.value,
-        'This was some really bizarre band I listened to as a young lad.');
+    expect(
+      item.media!.description!.value,
+      'This was some really bizarre band I listened to as a young lad.',
+    );
 
     expect(item.media!.keywords, 'kitty, cat, big dog, yarn, fluffy');
 
@@ -194,7 +198,9 @@ void main() {
     expect(item.media!.embed!.params.length, 5);
     expect(item.media!.embed!.params.first.name, 'type');
     expect(
-        item.media!.embed!.params.first.value, 'application/x-shockwave-flash');
+      item.media!.embed!.params.first.value,
+      'application/x-shockwave-flash',
+    );
 
     expect(item.media!.responses.length, 2);
     expect(item.media!.responses.first, 'http://www.response1.com');
@@ -211,7 +217,9 @@ void main() {
     expect(item.media!.prices.first.price, 19.99);
     expect(item.media!.prices.first.type, 'rent');
     expect(
-        item.media!.prices.first.info, 'http://www.dummy.jp/package_info.html');
+      item.media!.prices.first.info,
+      'http://www.dummy.jp/package_info.html',
+    );
     expect(item.media!.prices.first.currency, 'EUR');
 
     expect(item.media!.license!.type, 'text/html');

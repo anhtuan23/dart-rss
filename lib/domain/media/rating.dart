@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Rating {
-  final String? scheme;
-  final String? value;
-
   const Rating({
     this.scheme,
     this.value,
@@ -18,4 +15,7 @@ class Rating {
       value: element.innerText,
     );
   }
+
+  final String? scheme;
+  final String? value;
 }

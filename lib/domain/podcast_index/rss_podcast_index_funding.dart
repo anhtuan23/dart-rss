@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssPodcastIndexFunding {
-  final String? url;
-  final String? value;
-
   RssPodcastIndexFunding({
     this.url,
     this.value,
@@ -17,4 +14,7 @@ class RssPodcastIndexFunding {
       value: element.innerText.trim(),
     );
   }
+
+  final String? url;
+  final String? value;
 }

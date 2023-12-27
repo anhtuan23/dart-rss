@@ -1,13 +1,13 @@
 import 'package:xml/xml.dart';
 
 class Copyright {
-  final String? url;
-  final String? value;
-
   const Copyright({
     this.url,
     this.value,
   });
+
+  final String? url;
+  final String? value;
 
   static Copyright? parse(XmlElement? element) {
     if (element == null) {

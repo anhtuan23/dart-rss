@@ -1,11 +1,11 @@
 import 'package:xml/xml.dart';
 
 class AtomGenerator {
+  const AtomGenerator(this.uri, this.version, this.value);
+
   final String? uri;
   final String? version;
   final String? value;
-
-  const AtomGenerator(this.uri, this.version, this.value);
 
   static AtomGenerator? parse(XmlElement? element) {
     if (element == null) {

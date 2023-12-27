@@ -1,5 +1,5 @@
-import 'package:http/http.dart' as http;
 import 'package:dart_rss/dart_rss.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   final client = http.Client();

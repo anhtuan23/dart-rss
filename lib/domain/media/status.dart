@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Status {
-  final String? state;
-  final String? reason;
-
   const Status({
     this.state,
     this.reason,
@@ -18,4 +15,7 @@ class Status {
       reason: element.getAttribute('reason'),
     );
   }
+
+  final String? state;
+  final String? reason;
 }

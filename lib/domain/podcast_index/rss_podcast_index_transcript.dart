@@ -1,11 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssPodcastIndexTranscript {
-  final String? url;
-  final String? type;
-  final String? language;
-  final String? rel;
-
   RssPodcastIndexTranscript({
     this.url,
     this.type,
@@ -25,4 +20,9 @@ class RssPodcastIndexTranscript {
       rel: element.getAttribute('rel'),
     );
   }
+
+  final String? url;
+  final String? type;
+  final String? language;
+  final String? rel;
 }

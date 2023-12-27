@@ -1,10 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssPodcastIndexSoundbite {
-  final double? startTime;
-  final double? duration;
-  final String? value;
-
   RssPodcastIndexSoundbite({
     this.startTime,
     this.duration,
@@ -22,4 +18,8 @@ class RssPodcastIndexSoundbite {
       value: element.innerText.trim(),
     );
   }
+
+  final double? startTime;
+  final double? duration;
+  final String? value;
 }

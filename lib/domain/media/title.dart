@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Title {
-  final String? type;
-  final String? value;
-
   const Title({
     this.type,
     this.value,
@@ -18,4 +15,7 @@ class Title {
       value: element.innerText,
     );
   }
+
+  final String? type;
+  final String? value;
 }

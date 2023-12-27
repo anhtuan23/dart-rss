@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssPodcastIndexChapters {
-  final String? url;
-  final String? type;
-
   RssPodcastIndexChapters({
     this.url,
     this.type,
@@ -19,4 +16,7 @@ class RssPodcastIndexChapters {
       type: element.getAttribute('type'),
     );
   }
+
+  final String? url;
+  final String? type;
 }

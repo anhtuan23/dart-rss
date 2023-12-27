@@ -3,31 +3,13 @@ import 'package:dart_rss/domain/media/media.dart';
 import 'package:dart_rss/domain/rss_category.dart';
 import 'package:dart_rss/domain/rss_content.dart';
 import 'package:dart_rss/domain/rss_enclosure.dart';
+import 'package:dart_rss/domain/rss_item_itunes.dart';
 import 'package:dart_rss/domain/rss_item_podcast_index.dart';
 import 'package:dart_rss/domain/rss_source.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-import 'rss_item_itunes.dart';
-
 class RssItem {
-  final String? title;
-  final String? description;
-  final String? link;
-
-  final List<RssCategory> categories;
-  final String? guid;
-  final String? pubDate;
-  final String? author;
-  final String? comments;
-  final RssSource? source;
-  final RssContent? content;
-  final Media? media;
-  final RssEnclosure? enclosure;
-  final DublinCore? dc;
-  final RssItemItunes? itunes;
-  final RssItemPodcastIndex? podcastIndex;
-
   const RssItem({
     this.title,
     this.description,
@@ -51,7 +33,8 @@ class RssItem {
       title: findElementOrNull(element, 'title')?.innerText,
       description: findElementOrNull(element, 'description')?.innerText,
       link: findElementOrNull(element, 'link')?.innerText,
-      categories: element.findElements('category').map((element) => RssCategory.parse(element)).toList(),
+      categories:
+          element.findElements('category').map(RssCategory.parse).toList(),
       guid: findElementOrNull(element, 'guid')?.innerText,
       pubDate: findElementOrNull(element, 'pubDate')?.innerText,
       author: findElementOrNull(element, 'author')?.innerText,
@@ -65,4 +48,21 @@ class RssItem {
       podcastIndex: RssItemPodcastIndex.parse(element),
     );
   }
+
+  final String? title;
+  final String? description;
+  final String? link;
+
+  final List<RssCategory> categories;
+  final String? guid;
+  final String? pubDate;
+  final String? author;
+  final String? comments;
+  final RssSource? source;
+  final RssContent? content;
+  final Media? media;
+  final RssEnclosure? enclosure;
+  final DublinCore? dc;
+  final RssItemItunes? itunes;
+  final RssItemPodcastIndex? podcastIndex;
 }

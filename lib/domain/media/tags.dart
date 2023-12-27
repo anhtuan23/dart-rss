@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Tags {
-  final String? tags;
-  final int weight;
-
   const Tags({
     this.tags,
     this.weight = 1,
@@ -18,4 +15,7 @@ class Tags {
       weight: int.tryParse(element.getAttribute('weight') ?? '1') ?? 1,
     );
   }
+
+  final String? tags;
+  final int weight;
 }

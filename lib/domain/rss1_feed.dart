@@ -6,24 +6,14 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 enum UpdatePeriod {
-  Hourly,
-  Daily,
-  Weekly,
-  Monthly,
-  Yearly,
+  hourly,
+  daily,
+  weekly,
+  monthly,
+  yearly,
 }
 
 class Rss1Feed {
-  final String? title;
-  final String? description;
-  final String? link;
-  final String? image;
-  final List<Rss1Item> items;
-  final UpdatePeriod? updatePeriod;
-  final int? updateFrequency;
-  final DateTime? updateBase;
-  final DublinCore? dc;
-
   Rss1Feed({
     this.title,
     this.description,
@@ -35,23 +25,6 @@ class Rss1Feed {
     this.updateBase,
     this.dc,
   });
-
-  static UpdatePeriod? _parseUpdatePeriod(String? updatePeriodString) {
-    switch (updatePeriodString) {
-      case 'hourly':
-        return UpdatePeriod.Hourly;
-      case 'daily':
-        return UpdatePeriod.Daily;
-      case 'weekly':
-        return UpdatePeriod.Weekly;
-      case 'monthly':
-        return UpdatePeriod.Monthly;
-      case 'yearly':
-        return UpdatePeriod.Yearly;
-      default:
-        return null;
-    }
-  }
 
   factory Rss1Feed.parse(String xmlString) {
     final document = XmlDocument.parse(xmlString);
@@ -67,21 +40,48 @@ class Rss1Feed {
       title: findElementOrNull(rdfElement, 'title')?.innerText,
       link: findElementOrNull(rdfElement, 'link')?.innerText,
       description: findElementOrNull(rdfElement, 'description')?.innerText,
-      items: rdfElement
-          .findElements('item')
-          .map((element) => Rss1Item.parse(element))
-          .toList(),
+      items: rdfElement.findElements('item').map(Rss1Item.parse).toList(),
       image:
           findElementOrNull(rdfElement, 'image')?.getAttribute('rdf:resource'),
       updatePeriod: _parseUpdatePeriod(
-          findElementOrNull(rdfElement, 'sy:updatePeriod')?.innerText),
+        findElementOrNull(rdfElement, 'sy:updatePeriod')?.innerText,
+      ),
       updateFrequency: parseInt(
-          findElementOrNull(rdfElement, 'sy:updateFrequency')?.innerText),
+        findElementOrNull(rdfElement, 'sy:updateFrequency')?.innerText,
+      ),
       updateBase: parseDateTime(
-          findElementOrNull(rdfElement, 'sy:updateBase')?.innerText),
+        findElementOrNull(rdfElement, 'sy:updateBase')?.innerText,
+      ),
       dc: channel.isEmpty
           ? null
           : DublinCore.parse(rdfElement.findElements('channel').first),
     );
+  }
+
+  final String? title;
+  final String? description;
+  final String? link;
+  final String? image;
+  final List<Rss1Item> items;
+  final UpdatePeriod? updatePeriod;
+  final int? updateFrequency;
+  final DateTime? updateBase;
+  final DublinCore? dc;
+
+  static UpdatePeriod? _parseUpdatePeriod(String? updatePeriodString) {
+    switch (updatePeriodString) {
+      case 'hourly':
+        return UpdatePeriod.hourly;
+      case 'daily':
+        return UpdatePeriod.daily;
+      case 'weekly':
+        return UpdatePeriod.weekly;
+      case 'monthly':
+        return UpdatePeriod.monthly;
+      case 'yearly':
+        return UpdatePeriod.yearly;
+      default:
+        return null;
+    }
   }
 }

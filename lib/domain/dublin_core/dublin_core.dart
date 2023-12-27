@@ -2,23 +2,6 @@ import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class DublinCore {
-  final String? title;
-  final String? description;
-  final String? creator;
-  final String? subject;
-  final List<String> subjects;
-  final String? publisher;
-  final String? contributor;
-  final String? date;
-  final String? type;
-  final String? format;
-  final String? identifier;
-  final String? source;
-  final String? language;
-  final String? relation;
-  final String? coverage;
-  final String? rights;
-
   const DublinCore({
     this.title,
     this.description,
@@ -61,4 +44,21 @@ class DublinCore {
       rights: findElementOrNull(element, 'dc:rights')?.innerText,
     );
   }
+
+  final String? title;
+  final String? description;
+  final String? creator;
+  final String? subject;
+  final List<String> subjects;
+  final String? publisher;
+  final String? contributor;
+  final String? date;
+  final String? type;
+  final String? format;
+  final String? identifier;
+  final String? source;
+  final String? language;
+  final String? relation;
+  final String? coverage;
+  final String? rights;
 }

@@ -1,27 +1,11 @@
+import 'package:dart_rss/domain/rss_itunes_category.dart';
+import 'package:dart_rss/domain/rss_itunes_image.dart';
+import 'package:dart_rss/domain/rss_itunes_owner.dart';
+import 'package:dart_rss/domain/rss_itunes_type.dart';
+import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-import 'package:dart_rss/util/helpers.dart';
-
-import 'rss_itunes_category.dart';
-import 'rss_itunes_image.dart';
-import 'rss_itunes_owner.dart';
-import 'rss_itunes_type.dart';
-
 class RssItunes {
-  final String? author;
-  final String? summary;
-  final bool? explicit;
-  final String? title;
-  final String? subtitle;
-  final RssItunesOwner? owner;
-  final List<String> keywords;
-  final RssItunesImage? image;
-  final List<RssItunesCategory?> categories;
-  final RssItunesType? type;
-  final String? newFeedUrl;
-  final bool? block;
-  final bool? complete;
-
   const RssItunes({
     this.author,
     this.summary,
@@ -54,9 +38,8 @@ class RssItunes {
               .toList() ??
           const <String>[],
       image: RssItunesImage.parse(findElementOrNull(element, 'itunes:image')),
-      categories:
-          categories?.map((ele) => RssItunesCategory.parse(ele)).toList() ??
-              const <RssItunesCategory>[],
+      categories: categories?.map(RssItunesCategory.parse).toList() ??
+          const <RssItunesCategory>[],
       type: newRssItunesType(findElementOrNull(element, 'itunes:type')),
       newFeedUrl:
           findElementOrNull(element, 'itunes:new-feed-url')?.innerText.trim(),
@@ -64,4 +47,18 @@ class RssItunes {
       complete: parseBoolLiteral(element, 'itunes:complete'),
     );
   }
+
+  final String? author;
+  final String? summary;
+  final bool? explicit;
+  final String? title;
+  final String? subtitle;
+  final RssItunesOwner? owner;
+  final List<String> keywords;
+  final RssItunesImage? image;
+  final List<RssItunesCategory?> categories;
+  final RssItunesType? type;
+  final String? newFeedUrl;
+  final bool? block;
+  final bool? complete;
 }

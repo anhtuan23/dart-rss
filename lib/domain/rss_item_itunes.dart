@@ -1,25 +1,10 @@
+import 'package:dart_rss/domain/rss_itunes_category.dart';
+import 'package:dart_rss/domain/rss_itunes_episode_type.dart';
+import 'package:dart_rss/domain/rss_itunes_image.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-import 'rss_itunes_category.dart';
-import 'rss_itunes_episode_type.dart';
-import 'rss_itunes_image.dart';
-
 class RssItemItunes {
-  final String? title;
-  final int? episode;
-  final int? season;
-  final Duration? duration;
-  final RssItunesEpisodeType? episodeType;
-  final String? author;
-  final String? summary;
-  final bool? explicit;
-  final String? subtitle;
-  final List<String> keywords;
-  final RssItunesImage? image;
-  final RssItunesCategory? category;
-  final bool? block;
-
   RssItemItunes({
     this.title,
     this.episode,
@@ -50,7 +35,8 @@ class RssItemItunes {
       season: seasonStr == null ? null : int.tryParse(seasonStr),
       duration: durationStr == null ? null : parseDuration(durationStr),
       episodeType: newRssItunesEpisodeType(
-          findElementOrNull(element, 'itunes:episodeType')),
+        findElementOrNull(element, 'itunes:episodeType'),
+      ),
       author: findElementOrNull(element, 'itunes:author')?.innerText.trim(),
       summary: findElementOrNull(element, 'itunes:summary')?.innerText.trim(),
       explicit: parseBoolLiteral(element, 'itunes:explicit'),
@@ -63,10 +49,25 @@ class RssItemItunes {
           const <String>[],
       image: RssItunesImage.parse(findElementOrNull(element, 'itunes:image')),
       category: RssItunesCategory.parse(
-          findElementOrNull(element, 'itunes:category')),
+        findElementOrNull(element, 'itunes:category'),
+      ),
       block: parseBoolLiteral(element, 'itunes:block'),
     );
   }
+
+  final String? title;
+  final int? episode;
+  final int? season;
+  final Duration? duration;
+  final RssItunesEpisodeType? episodeType;
+  final String? author;
+  final String? summary;
+  final bool? explicit;
+  final String? subtitle;
+  final List<String> keywords;
+  final RssItunesImage? image;
+  final RssItunesCategory? category;
+  final bool? block;
 }
 
 Duration parseDuration(String s) {

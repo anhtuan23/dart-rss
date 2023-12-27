@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Statistics {
-  final int views;
-  final int favorites;
-
   const Statistics({
     this.views = 0,
     this.favorites = 0,
@@ -18,4 +15,7 @@ class Statistics {
       favorites: int.tryParse(element.getAttribute('favorites') ?? '0') ?? 0,
     );
   }
+
+  final int views;
+  final int favorites;
 }

@@ -1,11 +1,6 @@
 import 'package:xml/xml.dart';
 
 class StarRating {
-  final double average;
-  final int count;
-  final int min;
-  final int max;
-
   const StarRating({
     this.average = 0,
     this.count = 0,
@@ -24,4 +19,9 @@ class StarRating {
       max: int.tryParse(element.getAttribute('max') ?? '0') ?? 0,
     );
   }
+
+  final double average;
+  final int count;
+  final int min;
+  final int max;
 }

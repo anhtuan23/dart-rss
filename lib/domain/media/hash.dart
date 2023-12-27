@@ -1,9 +1,6 @@
 import 'package:xml/xml.dart';
 
 class Hash {
-  final String? algo;
-  final String? value;
-
   const Hash({
     this.algo,
     this.value,
@@ -18,4 +15,7 @@ class Hash {
       value: element.innerText,
     );
   }
+
+  final String? algo;
+  final String? value;
 }
