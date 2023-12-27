@@ -8,11 +8,11 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
+  http: ^1.1.2
+  intl: ^0.18.1
   xml: ^6.2.2
-  http: ^0.13.5
-  intl: ^0.18.0
 
 dev_dependencies:
   test: ^1.16.4
-  pedantic: ^1.10.0
+  very_good_analysis: ^5.1.0
 
